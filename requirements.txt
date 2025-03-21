@@ -7,3 +7,4 @@ noisereduce>=2.0.1
 transformers>=4.34.0
 SpeechRecognition>=3.10.0
 pydub>=0.25.1
+PyAudio>=0.2.13
