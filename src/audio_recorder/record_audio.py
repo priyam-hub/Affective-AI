@@ -82,22 +82,28 @@ class AudioRecorder:
         """
         try:
 
-            default_device = sd.default.device[0]
-            
-            if default_device is None or default_device == -1:
+            # List available devices
+            devices           = sd.query_devices()
+            input_devices     = [d for d in devices if d["max_input_channels"] > 0]
+
+            if not input_devices:
                 raise ValueError("No valid audio input device found. Please check your microphone settings.")
+
+            sd.default.device = input_devices[0]["index"]
             
-            frames        = sd.rec(int(self.rate * self.record_seconds), 
-                                   samplerate = self.rate, 
-                                   channels   = self.channels, 
-                                   dtype      = self.format
-                                   )
+            record_audio_logger.info(f"Using audio input device: {input_devices[0]['name']}")
+            
+            frames            = sd.rec(int(self.rate * self.record_seconds), 
+                                       samplerate = self.rate, 
+                                       channels   = self.channels, 
+                                       dtype      = self.format
+                                       )
             sd.wait()
             
             # Noise Reduction
-            reduced_noise = nr.reduce_noise(y = frames.flatten(), sr=self.rate, prop_decrease = 0.8)
+            reduced_noise     = nr.reduce_noise(y = frames.flatten(), sr=self.rate, prop_decrease = 0.8)
             
-            wav_file_path = AudioSaver.audio_saver(reduced_noise, self.rate, self.audio_save_path, "recorded_audio.wav")
+            wav_file_path     = AudioSaver.audio_saver(reduced_noise, self.rate, self.audio_save_path, "recorded_audio.wav")
             
             return wav_file_path
         
