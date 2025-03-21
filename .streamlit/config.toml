@@ -2,4 +2,4 @@
 headless = true
 
 [global]
-pythonVersion = "3.9"
+pythonVersion = "3.12"
