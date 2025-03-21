@@ -1,0 +1,11 @@
+wave
+torch
+numpy
+pyaudio
+librosa
+datasets
+pyperclip
+streamlit
+soundfile
+noisereduce
+transformers

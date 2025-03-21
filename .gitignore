@@ -1,0 +1,25 @@
+# Ignore environment and logs
+audio_generation_env/
+logs/
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore all .DS_Store files in subdirectories
+**/.DS_Store
+
+# Ignore Python cache files
+__pycache__/
+**/__pycache__/
+
+# Ignore compiled Python files
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environments (common names)
+venv/
+env/
+
+# Ignore Streamlit cache and temporary files
+.streamlit/
