@@ -8,8 +8,9 @@ from ..utils.logger import LoggerSetup
 from ..utils.audio_saver import AudioSaver
 
 ## LOGGER SETUP
-record_audio_logger = LoggerSetup(logger_name = "record_audio.py", log_filename_prefix = "record_audio").get_logger()
+record_audio_logger           = LoggerSetup(logger_name = "record_audio.py", log_filename_prefix = "record_audio").get_logger()
 
+os.environ["LD_LIBRARY_PATH"] = "/usr/lib"
 class AudioRecorder:
     """
     A class for recording and processing audio in real-time using Sounddevice.
