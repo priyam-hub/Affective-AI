@@ -3,7 +3,6 @@
 import torch
 from ..utils.logger import LoggerSetup
 from ..utils.audio_saver import AudioSaver
-from ..utils.model_loader import ModelLoader  
 
 ## LOGGER SETUP
 audio_transcriber_logger = LoggerSetup(logger_name="transcribe_audio.py", log_filename_prefix="audio_transcriber").get_logger()

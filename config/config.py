@@ -11,7 +11,7 @@ class Config:
     
     # AUDIO CONFIGURATIONS
     CHUNK                 = 1024
-    FORMAT                = pyaudio.paInt16
+    FORMAT                = 16  
     CHANNELS              = 1
     SAMPLE_RATE           = 16000
     RECORD_SECONDS        = 5  
