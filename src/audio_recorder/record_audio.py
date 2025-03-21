@@ -1,9 +1,8 @@
 # DEPENDENCIES
 
 import os
-import pyaudio
 import numpy as np
-import soundfile as sf
+import sounddevice as sd
 import noisereduce as nr
 from ..utils.logger import LoggerSetup
 from ..utils.audio_saver import AudioSaver
@@ -13,7 +12,7 @@ record_audio_logger = LoggerSetup(logger_name = "record_audio.py", log_filename_
 
 class AudioRecorder:
     """
-    A class for recording and processing audio in real-time using PyAudio.
+    A class for recording and processing audio in real-time using Sounddevice.
 
     attributes:
     ------------
@@ -56,7 +55,7 @@ class AudioRecorder:
             self.channels         = channels
             self.chunk            = chunk
             self.record_seconds   = record_seconds
-            self.format           = pyaudio.paInt16
+            self.format           = np.int16
 
             # Define the save directory for audio files
             self.audio_save_path  = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../audio/"))
@@ -80,33 +79,21 @@ class AudioRecorder:
             wav_file_path        {str}        : The filename of the recorded and processed audio file.
         
         """
-        p             = pyaudio.PyAudio()
-
-
-        stream        = p.open(format              = self.format, 
-                               channels            = self.channels, 
-                               rate                = self.rate, 
-                               input               = True, 
-                               frames_per_buffer   = self.chunk
-                               )
-        frames        = []
-
-        for _ in range(0, int(self.rate / self.chunk * self.record_seconds)):
+        try:
+            frames        = sd.rec(int(self.rate * self.record_seconds), 
+                                   samplerate = self.rate, 
+                                   channels   = self.channels, 
+                                   dtype      = self.format
+                                   )
+            sd.wait()
             
-            data      = stream.read(self.chunk)
-            frames.append(np.frombuffer(data, dtype=np.int16))
-
-        # Stop and close the stream
-        stream.stop_stream()
-        stream.close()
-        p.terminate()
-
-        # Convert frames to a single NumPy array
-        audio_data    = np.concatenate(frames, axis = 0)
-
-        # Noise Reduction
-        reduced_noise = nr.reduce_noise(y = audio_data, sr = self.rate, prop_decrease = 0.8)
-
-        wav_file_path = AudioSaver.audio_saver(reduced_noise, self.rate, self.audio_save_path, "recorded_audio.wav")
-
-        return wav_file_path
+            # Noise Reduction
+            reduced_noise = nr.reduce_noise(y = frames.flatten(), sr=self.rate, prop_decrease = 0.8)
+            
+            wav_file_path = AudioSaver.audio_saver(reduced_noise, self.rate, self.audio_save_path, "recorded_audio.wav")
+            
+            return wav_file_path
+        
+        except Exception as e:
+            record_audio_logger.error(f"Error recording audio: {repr(e)}")
+            return ""

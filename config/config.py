@@ -1,5 +1,4 @@
 import os
-import pyaudio
 from pathlib import Path
 
 class Config:
