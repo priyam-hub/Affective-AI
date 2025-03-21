@@ -20,6 +20,3 @@ __pycache__/
 # Ignore virtual environments (common names)
 venv/
 env/
-
-# Ignore Streamlit cache and temporary files
-.streamlit/

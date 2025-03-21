@@ -1,0 +1,5 @@
+[server]
+headless = true
+
+[global]
+pythonVersion = "3.9"
