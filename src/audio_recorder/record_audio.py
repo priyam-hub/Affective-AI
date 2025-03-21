@@ -81,6 +81,12 @@ class AudioRecorder:
         
         """
         try:
+
+            default_device = sd.default.device[0]
+            
+            if default_device is None or default_device == -1:
+                raise ValueError("No valid audio input device found. Please check your microphone settings.")
+            
             frames        = sd.rec(int(self.rate * self.record_seconds), 
                                    samplerate = self.rate, 
                                    channels   = self.channels, 
