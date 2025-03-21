@@ -1,8 +1,9 @@
-numpy
-pyaudio
-librosa
-pyperclip
-streamlit
-soundfile
-noisereduce
-transformers
+numpy==1.24.3
+librosa==0.10.1
+pyperclip==1.8.2
+streamlit==1.27.0
+soundfile==0.12.1
+noisereduce==2.0.1
+transformers==4.34.0
+SpeechRecognition==3.10.0
+pydub==0.25.1
