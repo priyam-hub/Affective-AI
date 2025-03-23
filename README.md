@@ -22,7 +22,6 @@ git clone https://github.com/priyam-hub/Speechify.git
 # Navigate to the project directory
 cd Speechify
 ```
-
 ---
 
 ## 🚀 Usage
@@ -36,12 +35,6 @@ bash setup.sh
 ```python
 streamlit run app.py
 ```
-
----
-
-## 🖼️ Demo
-![Speechify Demo](https://via.placeholder.com/800x400.png?text=Speechify+Demo)
-
 ---
 
 ## 🏗️ Tech Stack
@@ -82,7 +75,7 @@ This project is licensed under the **MIT License**.
 ---
 
 ## 📬 Contact
-📧 **Email**: priyam@example.com  
+📧 **Email**: palpriyam95@gmail.com
 🐙 **GitHub**: [priyam-hub](https://github.com/priyam-hub)  
 🌐 **Website**: [Coming Soon!]
 
