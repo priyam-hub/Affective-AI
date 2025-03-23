@@ -70,14 +70,16 @@ class AudioRecorder:
             
             record_audio_logger.error(f"Error initializing AudioRecorder: {repr(e)}")
 
-    def record_audio(self) -> str:
+    def record_audio(self) -> tuple[np.ndarray, int]:
         """
         Records audio for a specified duration, applies noise reduction, 
         and saves it as a WAV file.
 
         returns:
         --------
-            wav_file_path        {str}        : The filename of the recorded and processed audio file.
+            reduced_noise      {np.ndarray}      : The noise-reduced audio signal.
+
+            rate                   {int}         : The sample rate of the recorded audio.
         
         """
         try:
@@ -106,6 +108,8 @@ class AudioRecorder:
             wav_file_path     = AudioSaver.audio_saver(reduced_noise, self.rate, self.audio_save_path, "recorded_audio.wav")
             
             return wav_file_path
+
+            # return reduced_noise, self.rate
         
         except Exception as e:
             record_audio_logger.error(f"Error recording audio: {repr(e)}")

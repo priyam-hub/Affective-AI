@@ -1,6 +1,7 @@
 # DEPENDENCIES
 
 import torch
+import numpy as np
 from ..utils.logger import LoggerSetup
 from ..utils.audio_saver import AudioSaver
 
@@ -31,7 +32,7 @@ class AudioTranscriber:
             
             self.processor, self.model = None, None
 
-    def transcribe_audio(self, audio_path: str, sample_rate : int) -> str:
+    def transcribe_audio(self, audio_path : str, sample_rate : int) -> str:
         """
         Transcribes the given audio file using a speech-to-text model.
 
@@ -39,21 +40,21 @@ class AudioTranscriber:
         ----------
             audio_path          {str}        : Path to the audio file to be transcribed.
             
-            sample_rate         {int}        : The sample rate of the audio file.
+            sample_rate         {int}            : The sample rate of the audio file.
 
         returns:
         --------
-            transcription       {str}        : Transcribed text from the audio file.
+            transcription       {str}            : Transcribed text from the audio file.
         """
         
-        try:
+        try: 
 
             audio, _          = AudioSaver.audio_loader(audio_path, sample_rate = sample_rate)
 
             if audio is None:
                 return "Error loading audio."
 
-            input_features    = self.processor(audio, return_tensors = "pt").input_features
+            input_features    = self.processor(audio, sampling_rate = sample_rate, return_tensors = "pt").input_features
 
             with torch.no_grad():
                 predicted_ids = self.model.generate(input_features)
