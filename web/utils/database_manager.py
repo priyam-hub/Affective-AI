@@ -1,11 +1,15 @@
 # DEPENDENCIES
 
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
+
 import pytz
 import sqlite3
 from librosa import ex
 from datetime import datetime
 
-from ...src.utils.logger import LoggerSetup
+from src.utils.logger import LoggerSetup
 
 database_manager_logger = LoggerSetup(logger_name = "database_manager.py", log_filename_prefix = "database_manager").get_logger()
 

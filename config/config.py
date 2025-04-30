@@ -8,13 +8,14 @@ class Config:
     It also provides a method to ensure required directories exist.
     """
 
+    AUDIO_PATH                       = "../audio/recorded_audio.wav"
+    DATABASE_PATH                    = "./database/data.db"
+    BEST_MODEL_PATH                  = "./models/classification_models/multinomial_logistic_regression.pkl"
+    EDA_RESULTS_PATH                 = "./results/eda_results"
+    ML_MODEL_SAVE_PATH               = "./models"
     EMOTION_DATASET_RAW              = "./data/emotion_dataset_raw.csv"
     EMOTION_DATASET_CLEANED          = "./data/emotion_dataset_cleaned.csv"
-
-    EDA_RESULTS_PATH                 = "./results/eda_results"
     MODEL_ACCURACY_PLOT_PATH         = "./results"
-
-    ML_MODEL_SAVE_PATH               = "./models"
 
     # AUDIO CONFIGURATIONS
     CHUNK                            = 1024
@@ -26,8 +27,8 @@ class Config:
     # HUGGING FACE MODEL CONFIGURATIONS
     MODEL_NAME                       = "priyammmmm/whisper_base"
 
-    AUDIO_PATH                       = "../audio/recorded_audio.wav"
-
+    TIMEZONE_IST                     = "Asia/Kolkata"
+    TIMEZONE_UTC                     = "UTC"
 
     @staticmethod
     def setup_directories():

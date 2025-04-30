@@ -1,3 +1,7 @@
 import streamlit as st
 
-st.write("Hello World")
+def main():
+    
+    st.title("Home Page")
+
+    st.write("Hello World")
