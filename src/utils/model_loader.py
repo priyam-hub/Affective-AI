@@ -1,14 +1,14 @@
 # DEPENDENCIES
 
-from ..utils.logger import LoggerSetup
+from .logger import LoggerSetup
 from transformers import WhisperProcessor
 from transformers import WhisperForConditionalGeneration
 
 ## LOGGER SETUP
-model_loader_logger = LoggerSetup(logger_name="model_loader.py", log_filename_prefix="model_loader").get_logger()
+model_loader_logger = LoggerSetup(logger_name = "model_loader.py", log_filename_prefix = "model_loader").get_logger()
 
 class ModelLoader:
-    """
+    """1
     A class responsible for loading the Whisper speech-to-text model and processor.
     """
 

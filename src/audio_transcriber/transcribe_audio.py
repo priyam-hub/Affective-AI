@@ -6,7 +6,7 @@ from ..utils.logger import LoggerSetup
 from ..utils.audio_saver import AudioSaver
 
 ## LOGGER SETUP
-audio_transcriber_logger = LoggerSetup(logger_name="transcribe_audio.py", log_filename_prefix="audio_transcriber").get_logger()
+audio_transcriber_logger = LoggerSetup(logger_name = "transcribe_audio.py", log_filename_prefix = "audio_transcriber").get_logger()
 
 class AudioTranscriber:
     """
@@ -59,7 +59,7 @@ class AudioTranscriber:
             with torch.no_grad():
                 predicted_ids = self.model.generate(input_features)
 
-            transcription     = self.processor.batch_decode(predicted_ids, skip_special_tokens=True)[0]
+            transcription     = self.processor.batch_decode(predicted_ids, skip_special_tokens = True)[0]
 
             audio_transcriber_logger.info("Audio transcribed successfully.")
 
