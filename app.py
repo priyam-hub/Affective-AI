@@ -116,22 +116,40 @@ def main():
     
     try:
 
-        st.sidebar.title("Navigation")
-        page = st.sidebar.radio("📚 Select a Page:", ["Home", "Speech-to-Text", "Detect Your Emotion", "Monitor", "About"])
+        # Sidebar branding and styling
+        st.sidebar.image("images/sidebar_logo.jpg", use_container_width = True)  
+        st.sidebar.markdown("## 🧠 Welcome to Affective-AI")
+        st.sidebar.markdown("Unlocking emotions from your text and voice")
 
-        if page == "Home":
+        # Custom navigation
+        st.sidebar.markdown("---")
+        st.sidebar.markdown("### 📌 Navigation")
+
+        page = st.sidebar.radio(
+            "Go to",
+            [
+                "🏠 Home",
+                "🎤 Speech-to-Text",
+                "😊 Detect Your Emotion",
+                "📊 Monitor",
+                "ℹ️ About"
+            ],
+            label_visibility="collapsed"  # Hides the "Go to" label for cleaner look
+        )
+
+        if page == "🏠 Home":
             home.main()
 
-        elif page == "Monitor":
+        elif page == "📊 Monitor":
             monitor.main()
         
-        elif page == "About":
+        elif page == "ℹ️ About":
             about.main()
 
-        elif page == "Speech-to-Text":
+        elif page == "🎤 Speech-to-Text":
             speech_to_text.main()
 
-        elif page == "Detect Your Emotion":
+        elif page == "😊 Detect Your Emotion":
 
             # CUSTOM CSS STYLING
             st.markdown(
