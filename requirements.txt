@@ -21,3 +21,4 @@ noisereduce>=2.0.1
 scikit-learn>=1.4.2
 transformers>=4.39.3
 SpeechRecognition>=3.10.0
+streamlit-option-menu>=0.4.0

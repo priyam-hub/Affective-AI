@@ -1,5 +1,6 @@
 # STREAMLIT CONFIGURATION
 import streamlit as st
+from streamlit_option_menu import option_menu
 st.set_page_config(page_title = "Affective-AI", page_icon = "🤗", layout = "centered")
 
 # DEPENDENCIES
@@ -123,19 +124,40 @@ def main():
 
         # Custom navigation
         st.sidebar.markdown("---")
-        st.sidebar.markdown("### 📌 Navigation")
+        st.sidebar.markdown("### Navigation")
 
-        page = st.sidebar.radio(
-            "Go to",
-            [
-                "🏠 Home",
-                "🎤 Speech-to-Text",
-                "😊 Detect Your Emotion",
-                "📊 Monitor",
-                "ℹ️ About"
-            ],
-            label_visibility="collapsed"  # Hides the "Go to" label for cleaner look
-        )
+        with st.sidebar:
+
+            page = option_menu(
+                menu_title     = None,  
+                options        = ["🏠 Home", 
+                                  "🎤 Speech-to-Text", 
+                                  "😊 Detect Your Emotion", 
+                                  "📊 Monitor", 
+                                  "ℹ️ About"],
+                icons          = ["house", 
+                                  "mic", 
+                                  "emoji-smile", 
+                                  "bar-chart", 
+                                  "info-circle"],
+                menu_icon      = "cast",  
+                default_index  =  0,
+                orientation    = "vertical",
+                styles={
+                    "container"        : {"padding"           : "0!important", 
+                                          "background-color"  : "#f0f2f6"},
+                    "icon"             : {"color"       : "orange", 
+                                          "font-size"   : "15px"},  
+                    "nav-link"         : {"font-size"    : "13px",  
+                                          "text-align"   : "left",
+                                          "margin"       : "0px",
+                                          "--hover-color": "#eee",
+                    },
+                    "nav-link-selected": {"background-color"  : "#fdc57b", 
+                                          "font-weight"       : "bold"},
+                }
+            )
+
 
         if page == "🏠 Home":
             home.main()
