@@ -1,14 +1,14 @@
 <div align="center">
 
-# 🎤 Speechify — Empowering Speech with AI!
+# 🤖 Affective AI — Understanding Emotions Through Text
 
 [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-Enabled-red)](https://streamlit.io/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Whisper](https://img.shields.io/badge/OpenAI-Whisper-blue.svg)](https://openai.com/research/whisper)
-[![gTTS](https://img.shields.io/badge/Google-gTTS-yellow.svg)](https://pypi.org/project/gTTS/)
+[![OpenAI](https://img.shields.io/badge/OpenAI-Whisper-blue.svg)](https://openai.com/research/whisper)
+[![XGBoost](https://img.shields.io/badge/XGBoost-Integrated-orange.svg)](https://xgboost.ai/)
 
-*A lightweight, multilingual Speech-to-Text and Text-to-Speech app powered by advanced AI models.*
+*Empowering machines to understand human emotions through textual data.*
 
 [Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Tech Stack](#-tech-stack) • [License](#-license) • [Contact](#-contact)
 
@@ -18,17 +18,17 @@
 
 ## 🌟 Overview
 
-**Speechify** is a real-time, bidirectional Speech-to-Text (STT) and Text-to-Speech (TTS) converter built with powerful AI models such as OpenAI Whisper and Google TTS. Designed for accessibility, productivity, and voice automation.
+**Affective AI** is a cutting-edge application designed to detect and analyze emotions from textual inputs. Leveraging advanced natural language processing and machine learning techniques, it provides insights into the emotional undertones present in text, aiding in areas like sentiment analysis, customer feedback interpretation, and more.
 
 ---
 
 ## 📌 Features
 
-- ✅ **Real-time Speech-to-Text** with OpenAI Whisper  
-- ✅ **Text-to-Speech** using gTTS with natural voice synthesis  
-- ✅ **Multilingual support** for global accessibility  
-- ✅ **Streamlit UI** for simple and elegant interaction  
-- ✅ **Lightweight & Fast** for any local machine or cloud setup  
+- ✅ **Emotion Detection**: Analyze text to identify underlying emotions.
+- ✅ **Real-time Analysis**: Immediate feedback on emotional content.
+- ✅ **User-friendly Interface**: Intuitive design for seamless interaction.
+- ✅ **Data Visualization**: Graphical representation of emotion metrics.
+- ✅ **Session Tracking**: Monitor and log user interactions for insights.
 
 ---
 
@@ -36,95 +36,77 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/priyam-hub/Speechify.git
+git clone https://github.com/priyam-hub/Affective-AI.git
 
 # Navigate into the directory
-cd Speechify
+cd Affective-AI
+
+# Install required dependencies
+pip install -r requirements.txt
 ```
 
 ---
 
 ## 🚀 Usage
 
-### 1. 🔧 Setup the Python Environment and Install Required Modules
 ```bash
-bash setup.sh
-```
-
-### 2. 💡 Run the Streamlit App with Simple and Basic User Interface
-```bash
+# Run the Streamlit application
 streamlit run app.py
 ```
+
+Upon running, navigate to the provided local URL in your browser to interact with the Affective AI application.
 
 ---
 
 ## 🧠 Tech Stack
 
 ### 🔌 Core Technologies
-- **Python 3.9+**
-- **OpenAI Whisper** – State-of-the-art speech recognition
-- **Google gTTS** – High-quality speech synthesis
-- **Streamlit** – Clean and interactive web UI
+
+- **Python 3.9+**: Primary programming language.
+- **Streamlit**: Framework for building interactive web applications.
+- **OpenAI Whisper**: Advanced speech recognition model.
+- **XGBoost**: Optimized gradient boosting library for classification tasks.
+- **Pandas & NumPy**: Data manipulation and numerical operations.
+- **Plotly & Altair**: Interactive data visualization libraries.
 
 ---
 
 ## 📁 Project Structure
 
 ```plaintext
-Speechify/
-├── app.py                 # Streamlit web app
-├── setup.sh               # Environment setup script
-├── requirements.txt       # Python dependencies
-├── modules/
-│   ├── speech_to_text.py  # Whisper-based STT logic
-│   └── text_to_speech.py  # gTTS-based TTS logic
-├── assets/
-│   ├── audio/             # Sample or recorded audio
-│   └── icons/             # UI images/icons
+Affective-AI/
+├── app.py                 # Main application script
+├── requirements.txt       # List of dependencies
+├── config/
+│   └── config.py          # Configuration settings
+├── src/
+│   ├── utils/
+│   │   ├── logger.py      # Logging utility
+│   │   └── model_loader.py# Model loading functions
+│   ├── audio_recorder/
+│   │   └── record_audio.py# Audio recording functionalities
+│   └── audio_transcriber/
+│       └── transcribe_audio.py # Audio transcription logic
+├── web/
+│   └── pages/
+│       ├── home.py        # Home page layout
+│       ├── monitor.py     # Monitoring dashboard
+│       └── about.py       # About section
 └── README.md              # Project documentation
-```
-
----
-
-## 🗺️ Roadmap
-
-- [ ] Add voice recording and playback interface  
-- [ ] Integrate faster whisper inference with CTranslate2  
-- [ ] Export transcripts as .txt or .srt  
-- [ ] Support more TTS engines like Coqui TTS and ElevenLabs  
-
----
-
-## 🤝 Contributing
-
-We welcome community contributions!
-
-```bash
-# Fork the repository
-# Create your feature branch
-git checkout -b feature-branch
-
-# Make changes & commit
-git commit -m "Add amazing feature"
-
-# Push and open PR
-git push origin feature-branch
 ```
 
 ---
 
 ## 📜 License
 
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for more details.
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for more details.
 
 ---
 
 <div align="center">
 
-**Speechify — Bridging Voice and Text with AI 🔁**
+**Affective AI — Bridging the Gap Between Text and Emotion**
 
-[↑ Back to Top](#-speechify--empowering-speech-with-ai)
+[↑ Back to Top](#-affective-ai--understanding-emotions-through-text)
 
 </div>
-
----
