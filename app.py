@@ -5,12 +5,12 @@ st.set_page_config(page_title = "Affective-AI", page_icon = "🤗", layout = "ce
 
 # DEPENDENCIES
 
-from librosa import ex
 import pytz
 import joblib
 import numpy as np
 import pandas as pd
 import altair as alt
+from librosa import ex
 import plotly.express as px
 from datetime import datetime
 
@@ -26,7 +26,7 @@ from web.pages import about
 from web.pages import monitor
 from web.pages import speech_to_text
 
-app_logger = LoggerSetup(logger_name = "test.py", log_filename_prefix = "test").get_logger()
+app_logger = LoggerSetup(logger_name = "app.py", log_filename_prefix = "app").get_logger()
 
 database_Manager            = DatabaseManager(db_path = Config.DATABASE_PATH)
 IST                         = pytz.timezone(Config.TIMEZONE_IST)  
