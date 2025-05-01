@@ -119,8 +119,6 @@ def main():
 
         # Sidebar branding and styling
         st.sidebar.image("images/sidebar_logo.jpg", use_container_width = True)  
-        st.sidebar.markdown("## 🧠 Welcome to Affective-AI")
-        st.sidebar.markdown("Unlocking emotions from your text and voice")
 
         # Custom navigation
         st.sidebar.markdown("---")
@@ -252,40 +250,48 @@ def main():
                     st.write("✅ **Recording complete. Transcribing...**")
 
                 database_Manager.add_page_visited_details("Home", datetime.now(IST))
-                st.subheader("Emotion Detection in Text")
 
-                with st.form(key = 'emotion_clf_form'):
-                    raw_text    = st.session_state.transcription
+                if st.session_state.transcription:
 
-                if raw_text:
-                    col1, col2  = st.columns(2)
+                    st.subheader("Emotion Detection in Text")
 
-                    prediction  = predict_emotions(docx = raw_text)
-                    probability = get_prediction_proba(docx = raw_text)
+                    with st.form(key = 'emotion_clf_form'):
+                        raw_text    = st.session_state.transcription
 
-                    database_Manager.add_prediction_details(rawtext      = raw_text, 
-                                                            prediction   = prediction, 
-                                                            probability  = np.max(probability), 
-                                                            timeOfvisit  = datetime.now(IST)
-                                                            )
+                    if raw_text:
+                        col1, col2  = st.columns(2)
 
-                    with col1:
-                        st.success("Original Text")
-                        st.write(raw_text)
+                        prediction  = predict_emotions(docx = raw_text)
+                        probability = get_prediction_proba(docx = raw_text)
 
-                        st.success("Prediction")
-                        emoji_icon = emotions_emoji_dict[prediction]
-                        st.write("{}:{}".format(prediction, emoji_icon))
-                        st.write("Confidence:{}".format(np.max(probability)))
+                        database_Manager.add_prediction_details(rawtext      = raw_text, 
+                                                                prediction   = prediction, 
+                                                                probability  = np.max(probability), 
+                                                                timeOfvisit  = datetime.now(IST)
+                                                                )
 
-                    with col2:
-                        st.success("Prediction Probability")
-                        proba_df = pd.DataFrame(probability, columns = best_model_pipeline.classes_)
-                        proba_df_clean = proba_df.T.reset_index()
-                        proba_df_clean.columns = ["emotions", "probability"]
+                        with col1:
+                            st.success("Original Text")
+                            
+                            st.write(raw_text)
 
-                        fig = alt.Chart(proba_df_clean).mark_bar().encode(x='emotions', y='probability', color='emotions')
-                        st.altair_chart(fig, use_container_width=True)
+                            st.success("Prediction")
+                            emoji_icon = emotions_emoji_dict[prediction]
+                            st.write("{}:{}".format(prediction, emoji_icon))
+                            st.write("Confidence:{}".format(np.max(probability)))
+
+                        with col2:
+                            st.success("Prediction Probability")
+                            
+                            proba_df               = pd.DataFrame(probability, columns = best_model_pipeline.classes_)
+                            proba_df_clean         = proba_df.T.reset_index()
+                            proba_df_clean.columns = ["emotions", "probability"]
+
+                            fig                    = alt.Chart(proba_df_clean).mark_bar().encode(x     = 'emotions', 
+                                                                                                y     = 'probability', 
+                                                                                                color = 'emotions'
+                                                                                                )
+                            st.altair_chart(fig, use_container_width = True)
 
         else:
             st.error("Page not found. Please select a valid page from the sidebar.")
