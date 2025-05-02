@@ -82,11 +82,8 @@ Upon running, navigate to the provided local URL in your browser to interact wit
 
 Before you begin using the AI-Powered Emotion Detection System, ensure that your environment is properly set up. You will need to install the following tools and libraries:
 
-### System Requirements:
-- **Python**: Python 3.10 or later
+### System and Software Requirements:
 - **Operating System**: Linux, macOS, or Windows (All platforms supported)
-
-### Software Requirements:
 - **Python** (3.10+): This project is built with Python 3.10 or newer. You can download Python from the official website:
    - [Python Download](https://www.python.org/downloads/)
 
