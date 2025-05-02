@@ -162,16 +162,16 @@ Affective-AI/
 │       ├── pipeline_saver.py                 # Save the Pipeline
 │       └── save_plot.py                      # Save the plot into particular directory       
 └── web/
-│   ├── __init__.py  
-│   ├── pages/                                # Directory for the Different Streamlit Pages
-│   │   ├── __init__.py 
-│   │   ├── about.py                          # About Page
-│   │   ├── home.py                           # Home Page
-│   │   ├── monitor.py                        # Monitor Page
-│   │   └── speech_to_text.py                 # STT Page
-│   └── utils/                                # Directory for the utility functions of Streamlit Pages
-│       ├── __init__.py   
-│       └── database_manager.py               # Python file utility functions of the Web App
+    ├── __init__.py  
+    ├── pages/                                # Directory for the Different Streamlit Pages
+    │   ├── __init__.py 
+    │   ├── about.py                          # About Page
+    │   ├── home.py                           # Home Page
+    │   ├── monitor.py                        # Monitor Page
+    │   └── speech_to_text.py                 # STT Page
+    └── utils/                                # Directory for the utility functions of Streamlit Pages
+        ├── __init__.py   
+        └── database_manager.py               # Python file utility functions of the Web App
 ``` 
 
 ---
