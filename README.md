@@ -74,9 +74,17 @@ Upon running, navigate to the provided local URL in your browser to interact wit
 - **Streamlit** - Framework for building interactive web applications.
 
 ### Models Stack
-- **Text Generation**: FALCON3-1B-Instruct
 - **Audio Generation**: OpenAI Whisper-Base
 - **Emotion Generation**: Multinomial Logistic Regression, Multinomial Naive Bayes, Random Forest
+
+### 🔊 Whisper Base Model (Fine-tuned)
+
+This project uses a fine-tuned version of OpenAI's Whisper base model for robust and efficient speech-to-text transcription. It has been trained to handle conversational audio with improved accuracy.
+
+👉 [View on Hugging Face](https://huggingface.co/priyammmmm/whisper_base)
+
+---
+
 
 ## 📋 Prerequisites
 
@@ -86,6 +94,65 @@ Before you begin using the AI-Powered Emotion Detection System, ensure that your
 - **Operating System**: Linux, macOS, or Windows (All platforms supported)
 - **Python** (3.10+): This project is built with Python 3.10 or newer. You can download Python from the official website:
    - [Python Download](https://www.python.org/downloads/)
+
+---
+
+## 🗺️ Roadmap
+
+<details>
+  <summary><strong>📍 Phase 1: Foundational Setup <em>(0 - 2 months)</em></strong></summary>
+
+* 🎙️ **Audio Input & STT Integration**
+
+  * Integrate OpenAI Whisper for speech-to-text conversion.
+* 🧹 **Text Preprocessing**
+
+  * Clean and structure text data from transcribed audio.
+* 💬 **Basic Emotion Detection**
+
+  * Implement baseline models:
+
+    * Multinomial Naive Bayes
+    * Logistic Regression
+* 🖥️ **Streamlit Integration**
+
+  * Build initial user interface for interaction.
+
+</details>
+
+<details>
+  <summary><strong>🚀 Phase 2: Model Enhancement & Visualization <em>(2 - 4 months)</em></strong></summary>
+
+* 🤖 **Advanced Emotion Detection Models**
+
+  * Integrate:
+
+    * Random Forest (with XGBoost)
+    * Multilayer Perceptron
+* 📊 **Real-Time Feedback & Visualization**
+
+  * Use Plotly/Altair for interactive emotion graphs.
+* 🗂️ **User Session Tracking**
+
+  * Log user inputs and detected emotions in a local SQLite database.
+
+</details>
+
+<details>
+  <summary><strong>🌐 Phase 3: Expansion & Deployment <em>(4 - 6 months)</em></strong></summary>
+
+* 🌍 **Multi-language Emotion Detection**
+
+  * Expand to multilingual transcription and analysis.
+* 🧠 **Personalized Feedback Engine**
+
+  * Analyze historical data for tailored emotion insights.
+* 📦 **Containerization & Cloud Deployment**
+
+  * Dockerize app
+  * Deploy using AWS/GCP/Azure
+
+</details>
 
 ---
 
@@ -172,7 +239,38 @@ Affective-AI/
     └── utils/                                # Directory for the utility functions of Streamlit Pages
         ├── __init__.py   
         └── database_manager.py               # Python file utility functions of the Web App
-``` 
+```
+---
+
+## 🔮 Future Work
+
+To enhance the capabilities of **Affective AI** and scale it into a more robust emotion-aware system, we have outlined the development roadmap in the following phases:
+
+### 🚀 **Phase 1: Immediate Enhancements** *(Timeframe: 1–2 months)*
+
+* ✅ **Multi-language Support**: Integrate multilingual transcription using Whisper's multilingual capabilities.
+* ✅ **User Authentication**: Add login/signup functionality for personalized tracking.
+* ✅ **Emotion Confidence Scores**: Display confidence/probability of detected emotions.
+* ✅ **Custom Dataset Upload**: Allow users to upload their own datasets for model training.
+* ✅ **UI/UX Improvements**: Make UI more dynamic and responsive across devices.
+
+
+### 🔧 **Phase 2: Intermediate Upgrades** *(Timeframe: 2–4 months)*
+
+* ✅ **Contextual Emotion Tracking**: Track emotion changes across longer sessions or conversations.
+* ✅ **Real-Time Audio Stream Analysis**: Detect emotion from live audio streams instead of recorded files.
+* ✅ **Mobile Responsiveness**: Optimize the platform for mobile browsers and potential app integration.
+* ✅ **Cloud Database Integration**: Move from local `data.db` to cloud-based storage (e.g., Firebase, MongoDB Atlas).
+* ✅ **Model Fine-Tuning**: Train emotion classification models on larger and more diverse datasets for improved accuracy.
+
+
+### 🌐 **Phase 3: Advanced Capabilities and Deployment** *(Timeframe: 4–6 months)*
+
+* ✅ **Cross-Modal Emotion Detection**: Combine audio and facial expression analysis (audio + video input).
+* ✅ **Dashboard Analytics**: Provide detailed user-based emotional analytics and trends over time.
+* ✅ **Deployment as SaaS**: Launch Affective AI as a Software-as-a-Service (SaaS) platform for enterprises.
+* ✅ **API Development**: Build RESTful APIs for third-party emotion detection integrations.
+* ✅ **Voice Emotion Feedback Loop**: Allow users to manually verify/correct emotions to improve future model accuracy.
 
 ---
 
