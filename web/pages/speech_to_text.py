@@ -160,8 +160,8 @@ def main():
 
             # Footer
             st.markdown("---")
-            st.markdown("<p style='text-align:center;'>Developed with ❤️ by Priyam Pal [AI and Data Science Engineer] using OpenAI-Whisper</p>", 
-                        unsafe_allow_html = True)
+            # st.markdown("<p style='text-align:center;'>Developed with ❤️ by Priyam Pal [AI and Data Science Engineer] using OpenAI-Whisper</p>", 
+            #             unsafe_allow_html = True)
 
     except Exception as e:
         speech_to_text_logger.error(f"An error occurred: {repr(e)}")
