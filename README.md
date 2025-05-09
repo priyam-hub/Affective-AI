@@ -282,7 +282,7 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 
 <div align="center">
 
-**Made with ❤️ by Priyam Pal - AI and Data Science Engineer**
+**Made by Priyam Pal**
 
 [↑ Back to Top](#-affective-ai--understanding-emotions-through-text)
 
