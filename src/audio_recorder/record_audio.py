@@ -103,7 +103,7 @@ class AudioRecorder:
             sd.wait()
             
             # Noise Reduction
-            reduced_noise     = nr.reduce_noise(y = frames.flatten(), sr=self.rate, prop_decrease = 0.8)
+            reduced_noise     = nr.reduce_noise(y = frames.flatten(), sr = self.rate, prop_decrease = 0.8)
             
             wav_file_path     = AudioSaver.audio_saver(reduced_noise, self.rate, self.audio_save_path, "recorded_audio.wav")
             
