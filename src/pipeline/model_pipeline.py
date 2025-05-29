@@ -75,14 +75,16 @@ class ModelTrainer:
             self.y_test     = y_test
             self.results    = []
 
-            self.models     = {"Multinomial Logistic Regression" : LogisticRegression(multi_class="multinomial", solver="lbfgs", max_iter=1000),
-                            "Multinomial Naive Bayes"         : MultinomialNB(),
-                            "Random Forest"                   : RandomForestClassifier(),
-                            "Linear SVC"                      : LinearSVC(),
-                            "RBF SVM": SVC(kernel="rbf", probability=True),
-                            "MLP Classifier": MLPClassifier(hidden_layer_sizes=(100,), max_iter=300),
-                            "Hist Gradient Boosting": HistGradientBoostingClassifier(),
-                            }
+            self.models     = {"Multinomial Logistic Regression" : LogisticRegression(multi_class = "multinomial", solver = "lbfgs", max_iter = 1000),
+                               "Multinomial Naive Bayes"         : MultinomialNB(),
+                               "Random Forest"                   : RandomForestClassifier(),
+                               "Linear SVC"                      : LinearSVC(),
+                               "RBF SVM"                         : SVC(kernel = "rbf", probability = True),
+                               "MLP Classifier"                  : MLPClassifier(hidden_layer_sizes = (100,), max_iter = 300),
+                               "Hist Gradient Boosting"          : HistGradientBoostingClassifier(),
+                               "XGBoost"                         : XGBClassifier(use_label_encoder = False, eval_metric = 'mlogloss'),
+                               "LightGBM"                        : LGBMClassifier()
+                               }
 
             if XGBClassifier is not None:
                 self.models["XGBoost"]  = XGBClassifier(use_label_encoder = False, eval_metric = 'mlogloss')
@@ -116,13 +118,14 @@ class ModelTrainer:
                 acc      = accuracy_score(self.y_test, preds)
 
                 self.results.append({"Model"    : name,
-                                    "Accuracy" : round(acc, 4)
-                                    })
+                                     "Accuracy" : round(acc, 4)
+                                    }
+                                    )
                 
                 filename = f"{name.lower().replace(' ', '_')}.pkl"
                 
                 saver    = PipelineSaver(output_dir  = output_dir, 
-                                        pipeline    = pipeline
+                                         pipeline    = pipeline
                                         )
                 
                 saver.save_pipeline(filename = filename)
