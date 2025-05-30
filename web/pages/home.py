@@ -45,7 +45,7 @@ def main():
     st.markdown('<p class="big-font centered">🤖 Affective-AI</p>', unsafe_allow_html = True)
     st.markdown('<p class="tagline centered">Empowering Communication Through Emotional Intelligence</p>', unsafe_allow_html = True)
 
-    st.image("images/home_banner.jpg", use_container_width = True) 
+    # st.image("images/home_banner.jpg", use_container_width = True) 
 
     st.markdown("---")
 

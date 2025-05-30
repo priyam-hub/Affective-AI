@@ -144,12 +144,12 @@ def main():
                 styles={
                     "container"        : {"padding"           : "0!important", 
                                           "background-color"  : "#f0f2f6"},
-                    "icon"             : {"color"       : "orange", 
-                                          "font-size"   : "15px"},  
-                    "nav-link"         : {"font-size"    : "13px",  
-                                          "text-align"   : "left",
-                                          "margin"       : "0px",
-                                          "--hover-color": "#eee",
+                    "icon"             : {"color"             : "orange", 
+                                          "font-size"         : "15px"},  
+                    "nav-link"         : {"font-size"         : "13px",  
+                                          "text-align"        : "left",
+                                          "margin"            : "0px",
+                                          "--hover-color"     : "#eee",
                     },
                     "nav-link-selected": {"background-color"  : "#fdc57b", 
                                           "font-weight"       : "bold"},
@@ -213,22 +213,25 @@ def main():
                 
 
                 recording_seconds                  = st.slider("Recording Duration (in seconds):", 
-                                                            min_value  = 1, 
-                                                            max_value  = 60, 
-                                                            value      = Config.RECORD_SECONDS, 
-                                                            step       = 1)
+                                                               min_value  = 1, 
+                                                               max_value  = 60, 
+                                                               value      = Config.RECORD_SECONDS, 
+                                                               step       = 1
+                                                               )
 
                 # Load model and processor from cache
                 processor, model                   = load_model()
 
                 # Initialize recorder and transcriber
                 recorder                           = AudioRecorder(rate            = Config.SAMPLE_RATE, 
-                                                                channels        = Config.CHANNELS, 
-                                                                chunk           = Config.CHUNK, 
-                                                                record_seconds  = recording_seconds
-                                                                )
+                                                                   channels        = Config.CHANNELS, 
+                                                                   chunk           = Config.CHUNK, 
+                                                                   record_seconds  = recording_seconds
+                                                                   )
                 
-                transcriber                        = AudioTranscriber(processor = processor, model = model)
+                transcriber                        = AudioTranscriber(processor = processor, 
+                                                                      model     = model
+                                                                      )
 
                 # Ensure session state stores transcription
                 if "transcription" not in st.session_state:
@@ -247,13 +250,13 @@ def main():
                     transcription                  = transcriber.transcribe_audio(audio_path, sample_rate = Config.SAMPLE_RATE) 
                     st.session_state.transcription = transcription
                     
-                    st.write("✅ **Recording complete. Transcribing...**")
+                    st.write("✅ **Recording complete. Detecting Emotion of Your Speech!!!**")
+
+                    st.toast("✅ **Emotion Detected From Your Speech**")
 
                 database_Manager.add_page_visited_details("Home", datetime.now(IST))
 
                 if st.session_state.transcription:
-
-                    st.subheader("Emotion Detection in Text")
 
                     with st.form(key = 'emotion_clf_form'):
                         raw_text    = st.session_state.transcription
@@ -271,7 +274,7 @@ def main():
                                                                 )
 
                         with col1:
-                            st.success("Original Text")
+                            st.success("Text From the Audio")
                             
                             st.write(raw_text)
 
@@ -292,6 +295,7 @@ def main():
                                                                                                 color = 'emotions'
                                                                                                 )
                             st.altair_chart(fig, use_container_width = True)
+
 
         else:
             st.error("Page not found. Please select a valid page from the sidebar.")
